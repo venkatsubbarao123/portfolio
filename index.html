@@ -98,9 +98,21 @@
       100% { transform: translate(70px, 50px) scale(1.15); }
     }
 
-    /* 🕷️ REALISTIC AUTHENTIC SPIDER-MAN EFFECTS */
+    /* 🕷️ ADVANCED INTERACTIVE SPIDER-MAN SYSTEM: MIDDLE WEB CAST & FLY */
     
-    /* 1. Hanging Spider-Man dropping down on silk web (Corner Top-Right) */
+    /* 1. Corner Cobweb (Top Left) */
+    .spider-corner-cobweb {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      height: 220px;
+      z-index: 100;
+      pointer-events: none;
+      filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.4));
+    }
+
+    /* 2. Top-Right Upside Down Hanging Spider-Man */
     .hanging-spiderman-corner {
       position: fixed;
       top: 0;
@@ -110,20 +122,19 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      animation: spiderDropBounce 9s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+      animation: spiderDropBounce 10s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
     }
 
     .spider-hang-thread {
       width: 2px;
-      height: 140px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.9));
-      box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
-      animation: threadGlow 2s infinite alternate;
+      height: 130px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.95));
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
     }
 
     .spider-upsidedown-hero {
-      width: 82px;
-      height: 98px;
+      width: 80px;
+      height: 95px;
       margin-top: -4px;
       filter: drop-shadow(0 15px 25px rgba(239, 68, 68, 0.5));
       animation: spiderSubtleSwing 3s ease-in-out infinite alternate;
@@ -132,9 +143,9 @@
 
     @keyframes spiderDropBounce {
       0% { transform: translateY(-160px); }
-      20% { transform: translateY(0); }
-      40% { transform: translateY(-30px); }
-      55% { transform: translateY(0); }
+      15% { transform: translateY(0); }
+      35% { transform: translateY(-25px); }
+      50% { transform: translateY(0); }
       80% { transform: translateY(0); }
       92% { transform: translateY(-20px); }
       100% { transform: translateY(-160px); }
@@ -145,90 +156,187 @@
       100% { transform: rotate(8deg); }
     }
 
-    @keyframes threadGlow {
-      0% { opacity: 0.6; }
-      100% { opacity: 1; box-shadow: 0 0 12px rgba(56, 189, 248, 0.9); }
+    /* 3. HERO SPIDER-MAN IN THE MIDDLE: SHOOTS WEBS AT WORDS & PHOTO, THEN FLIES */
+    .spiderman-story-stage {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 110;
+      pointer-events: none;
+      overflow: hidden;
     }
 
-    /* 2. Top-Left Intricate Silk Cobweb */
-    .spider-corner-cobweb {
-      position: fixed;
+    /* Dynamic SVG Canvas connecting spider hands to words and photo */
+    .spiderman-web-canvas {
+      position: absolute;
       top: 0;
       left: 0;
-      width: 220px;
-      height: 220px;
-      z-index: 100;
-      pointer-events: none;
-      filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.45));
+      width: 100%;
+      height: 100%;
+      z-index: 1;
     }
 
-    /* 3. Flying & Web-Shooting Spider-Man Hero across the screen */
-    .spider-web-shooter-container {
-      position: fixed;
-      top: 25%;
-      left: -180px;
-      z-index: 102;
-      pointer-events: none;
-      display: flex;
-      align-items: center;
-      animation: spidermanFlyShooting 16s infinite cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* Dynamic shooting laser-silk web stream */
-    .shooting-web-silk {
+    /* Realistic Spider-Man Character in Middle Stage */
+    .middle-spiderman-character {
       position: absolute;
-      top: 30px;
-      right: 90px;
-      width: 320px;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), rgba(56, 189, 248, 0.9));
-      box-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
-      transform-origin: right center;
-      transform: rotate(-25deg);
-      animation: webLaserShoot 2s infinite ease-out;
+      width: 110px;
+      height: 110px;
+      z-index: 2;
+      animation: spiderMiddleSequence 14s infinite ease-in-out;
+      filter: drop-shadow(0 12px 30px rgba(225, 29, 72, 0.65));
     }
 
-    .spiderman-flying-body {
-      width: 120px;
-      height: 85px;
-      filter: drop-shadow(0 12px 25px rgba(225, 29, 72, 0.6));
-      transform: rotate(18deg);
-      animation: flyingAirFlutter 2s ease-in-out infinite alternate;
-    }
-
-    @keyframes spidermanFlyShooting {
+    /* KEYFRAME SEQUENCE:
+       0s-2s: Drop into center/middle from above
+       2s-6s: Hold in middle, shoot web streams at words and profile pic
+       6s-10s: Web zip & FLY ACROSS THE SCREEN with dynamic swing
+       10s-14s: Land away and prepare for next loop
+    */
+    @keyframes spiderMiddleSequence {
       0% {
-        left: -200px;
-        top: 32%;
+        top: -150px;
+        left: 48vw;
+        transform: scale(0.8) rotate(0deg);
         opacity: 0;
       }
-      10% {
+      12% {
+        top: 38vh;
+        left: 46vw;
+        transform: scale(1.15) rotate(-5deg);
+        opacity: 1;
+      }
+      20% {
+        top: 36vh;
+        left: 46vw;
+        transform: scale(1.1) rotate(0deg);
         opacity: 1;
       }
       45% {
-        left: 45vw;
-        top: 18%;
-        transform: scale(1.05);
-      }
-      85% {
+        /* In middle shooting webs at heading & photo */
+        top: 36vh;
+        left: 46vw;
+        transform: scale(1.1) rotate(-8deg);
         opacity: 1;
       }
-      100% {
+      50% {
+        /* Preparing to launch/fly */
+        top: 39vh;
+        left: 45vw;
+        transform: scale(1.2) rotate(15deg);
+      }
+      65% {
+        /* HIGH SPEED FLY & SWING ACROSS SCREEN */
+        top: 15vh;
+        left: 82vw;
+        transform: scale(1) rotate(35deg);
+      }
+      80% {
+        top: 25vh;
         left: 105vw;
-        top: 35%;
+        transform: scale(0.9) rotate(20deg);
+        opacity: 1;
+      }
+      85% {
+        top: -100px;
+        left: 110vw;
+        opacity: 0;
+      }
+      100% {
+        top: -150px;
+        left: 48vw;
         opacity: 0;
       }
     }
 
-    @keyframes flyingAirFlutter {
-      0% { transform: translateY(0) rotate(14deg); }
-      100% { transform: translateY(-15px) rotate(22deg); }
+    /* Glowing Web Threads animated when Spider-Man is in middle */
+    .web-beam {
+      stroke: rgba(255, 255, 255, 0.95);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.9));
+      stroke-dasharray: 600;
+      stroke-dashoffset: 600;
+      animation: shootWebBeam 14s infinite ease-in-out;
     }
 
-    @keyframes webLaserShoot {
-      0% { width: 40px; opacity: 0.3; }
-      50% { width: 340px; opacity: 1; }
-      100% { width: 340px; opacity: 0.7; }
+    .web-beam-2 {
+      animation-delay: 0.3s;
+    }
+
+    .web-beam-3 {
+      animation-delay: 0.6s;
+    }
+
+    @keyframes shootWebBeam {
+      0%, 18% {
+        stroke-dashoffset: 600;
+        opacity: 0;
+      }
+      24% {
+        stroke-dashoffset: 0;
+        opacity: 1;
+      }
+      52% {
+        stroke-dashoffset: 0;
+        opacity: 1;
+      }
+      65% {
+        stroke-dashoffset: 0;
+        opacity: 0;
+      }
+      100% {
+        stroke-dashoffset: 600;
+        opacity: 0;
+      }
+    }
+
+    /* Web Net overlay appearing over the Words / Heading & Photo */
+    .word-web-splat {
+      position: absolute;
+      width: 140px;
+      height: 90px;
+      pointer-events: none;
+      z-index: 5;
+      animation: webSplatReveal 14s infinite ease-in-out;
+    }
+
+    .splat-name {
+      top: 19vh;
+      left: 12vw;
+    }
+
+    .splat-photo {
+      top: 24vh;
+      right: 14vw;
+      width: 120px;
+      height: 120px;
+    }
+
+    @keyframes webSplatReveal {
+      0%, 23% {
+        opacity: 0;
+        transform: scale(0.3);
+      }
+      28% {
+        opacity: 0.95;
+        transform: scale(1.05);
+      }
+      35% {
+        opacity: 0.85;
+        transform: scale(1);
+      }
+      58% {
+        opacity: 0.85;
+        transform: scale(1);
+      }
+      68% {
+        opacity: 0;
+        transform: scale(1.1);
+      }
+      100% {
+        opacity: 0;
+      }
     }
 
     /* Navbar */
@@ -1234,27 +1342,68 @@
     </div>
   </div>
 
-  <!-- 🕸️ FLYING & WEB SHOOTING SPIDER-MAN (SWINGING ACROSS SCREEN) -->
-  <div class="spider-web-shooter-container">
-    <div class="shooting-web-silk"></div>
-    <div class="spiderman-flying-body">
-      <!-- High detail Flying Spider-Man Hero SVG -->
-      <svg viewBox="0 0 120 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Extended Front Hand shooting silk web -->
-        <path d="M72 40 L108 26 L118 24" stroke="#e11d48" stroke-width="6" stroke-linecap="round"/>
-        <!-- Web shooter blast sparks -->
-        <circle cx="118" cy="24" r="4" fill="#ffffff" filter="drop-shadow(0 0 6px #38bdf8)"/>
-        <!-- Head tilted forward in flight -->
-        <ellipse cx="78" cy="30" rx="13" ry="15" fill="#e11d48" stroke="#000" stroke-width="1.5"/>
-        <path d="M72 26 Q78 22 84 27 Q80 34 72 26 Z" fill="#fff" stroke="#000" stroke-width="2"/>
-        <!-- Hero Torso -->
-        <path d="M52 46 Q64 36 74 42 L66 68 Q54 66 48 58 Z" fill="#e11d48"/>
-        <path d="M54 50 L64 45 L62 65" fill="#1d4ed8"/>
-        <!-- Trailing Rear Hand -->
-        <path d="M52 48 L32 36 L24 40" stroke="#e11d48" stroke-width="5" stroke-linecap="round"/>
-        <!-- Trailing Aerodynamic Legs -->
-        <path d="M48 60 L24 72 L8 76" stroke="#1d4ed8" stroke-width="6" stroke-linecap="round"/>
-        <path d="M54 64 L30 82 L16 88" stroke="#e11d48" stroke-width="6" stroke-linecap="round"/>
+  <!-- 🕸️ SPIDER-MAN STAGE: MIDDLE WEB CASTING & FLYING OVER WORDS & PIC -->
+  <div class="spiderman-story-stage" id="spiderStage">
+    
+    <!-- Dynamic SVG Web Beams shooting from Middle Spider-Man to Text & Photo -->
+    <svg class="spiderman-web-canvas" id="spiderWebCanvas" viewBox="0 0 1000 700" preserveAspectRatio="none">
+      <!-- Beam 1: Shoots toward Title / Name Words (Left side) -->
+      <path class="web-beam" d="M 470 270 Q 320 220 180 180" />
+      <path class="web-beam web-beam-2" d="M 470 275 Q 350 260 220 240" />
+      
+      <!-- Beam 2: Shoots toward Hero Profile Photo (Right side) -->
+      <path class="web-beam" d="M 520 270 Q 660 230 780 220" />
+      <path class="web-beam web-beam-3" d="M 520 275 Q 680 280 810 260" />
+
+      <!-- Anchor silk line holding Spider-Man in the center from ceiling -->
+      <line x1="500" y1="0" x2="495" y2="255" stroke="rgba(255,255,255,0.85)" stroke-width="1.8" filter="drop-shadow(0 0 6px #38bdf8)" />
+    </svg>
+
+    <!-- Web Splat Nets that stick over Name & Photo when shot -->
+    <svg class="word-web-splat splat-name" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 40 Q40 10 70 40 Q100 70 120 40" stroke="rgba(255,255,255,0.9)" stroke-width="1.5"/>
+      <path d="M30 15 Q60 40 90 20 Q110 50 80 70" stroke="rgba(56,189,248,0.85)" stroke-width="1.3"/>
+      <path d="M20 60 Q60 45 100 65" stroke="rgba(255,255,255,0.8)" stroke-width="1.2"/>
+      <circle cx="60" cy="40" r="3" fill="#e11d48"/>
+    </svg>
+
+    <svg class="word-web-splat splat-photo" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Cobweb wrapping over corner of profile card -->
+      <path d="M0 0 Q60 60 120 0 M0 0 Q60 60 0 120 M120 0 Q60 60 120 120" stroke="rgba(255,255,255,0.85)" stroke-width="1.6"/>
+      <path d="M20 20 Q60 60 100 20 M20 20 Q60 60 20 100" stroke="rgba(56,189,248,0.9)" stroke-width="1.3"/>
+      <circle cx="60" cy="60" r="4" fill="#38bdf8"/>
+    </svg>
+
+    <!-- Realistic Middle Spider-Man Hero Character -->
+    <div class="middle-spiderman-character">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Dual Web shooter blasts firing from left & right wrists -->
+        <circle cx="15" cy="42" r="6" fill="#ffffff" filter="drop-shadow(0 0 8px #38bdf8)" />
+        <circle cx="85" cy="42" r="6" fill="#ffffff" filter="drop-shadow(0 0 8px #38bdf8)" />
+        
+        <!-- Left Shooting Arm pointing at Words -->
+        <path d="M36 46 L20 42 L15 42" stroke="#e11d48" stroke-width="6" stroke-linecap="round" />
+        <!-- Right Shooting Arm pointing at Photo -->
+        <path d="M64 46 L80 42 L85 42" stroke="#e11d48" stroke-width="6" stroke-linecap="round" />
+        
+        <!-- Spidey Head & Large Angled Expressive Eyes -->
+        <ellipse cx="50" cy="30" rx="14" ry="17" fill="#e11d48" stroke="#000" stroke-width="1.5" />
+        <!-- Web mesh pattern on mask -->
+        <path d="M50 14 L50 46 M38 30 L62 30" stroke="rgba(0,0,0,0.4)" stroke-width="1" />
+        <!-- Eye Lenses -->
+        <path d="M42 26 Q47 20 50 28 Q45 35 42 26 Z" fill="#ffffff" stroke="#000" stroke-width="2.5" />
+        <path d="M58 26 Q53 20 50 28 Q55 35 58 26 Z" fill="#ffffff" stroke="#000" stroke-width="2.5" />
+        
+        <!-- Athletic Torso & Suit -->
+        <path d="M38 46 Q50 42 62 46 L58 72 Q50 76 42 72 Z" fill="#1d4ed8" stroke="#e11d48" stroke-width="2" />
+        <path d="M45 46 L45 72 M55 46 L55 72" stroke="#e11d48" stroke-width="4" />
+        <!-- Black Chest Spider Logo -->
+        <ellipse cx="50" cy="56" rx="3.5" ry="5.5" fill="#000000" />
+        <path d="M48 52 L42 46 M52 52 L58 46 M48 58 L42 64 M52 58 L58 64" stroke="#000" stroke-width="1.5" />
+
+        <!-- Crouched / Acrobatic Spring Legs -->
+        <path d="M42 72 L30 84 L18 80" stroke="#1d4ed8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M58 72 L70 84 L82 80" stroke="#e11d48" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
     </div>
   </div>
