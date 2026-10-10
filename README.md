@@ -145,4 +145,4 @@ Passionate **Entry-level Python Developer & Software Engineer** with an MCA degr
 - 📱 **Phone:** +91-7093260994
 
 ---
-*© 2026 Choppavarapu Venkata Subba Rao. Designed for Recruiter & Technical Excellence.*
+
