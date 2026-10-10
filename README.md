@@ -4,7 +4,7 @@
 > MCA Graduate (2024–2026) | Vignan's Lara Institute of Technology & Science  
 > Guntur, Andhra Pradesh, India 🇮🇳
 
-[![Live Portfolio](https://img.shields.io/badge/Live_Portfolio-Vercel-black?style=for-the-badge&logo=vercel)](https://chsubbuportfolio.vercel.app)
+[![Live Portfolio] ( https://chsubbuportfolio.vercel.app )
 [![GitHub](https://img.shields.io/badge/GitHub-venkatsubbarao123-181717?style=for-the-badge&logo=github)](https://github.com/venkatsubbarao123)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-venkatasubbarao09-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/venkatasubbarao09)
 [![LeetCode](https://img.shields.io/badge/LeetCode-Wm6hHxkoyq-FFA116?style=for-the-badge&logo=leetcode)](https://leetcode.com/u/Wm6hHxkoyq/)
