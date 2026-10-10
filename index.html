@@ -156,18 +156,17 @@
       100% { transform: rotate(8deg); }
     }
 
-    /* 3. HERO SPIDER-MAN IN THE MIDDLE: SHOOTS WEBS AT WORDS & PHOTO, THEN FLIES */
+    /* 🕷️ EPIC SPIDER-MAN: FLIES FROM LEFT TO RIGHT, SHOOTING WEBS FROM WORD TO WORD */
     .spiderman-story-stage {
       position: fixed;
       inset: 0;
       width: 100vw;
       height: 100vh;
-      z-index: 110;
+      z-index: 120;
       pointer-events: none;
       overflow: hidden;
     }
 
-    /* Dynamic SVG Canvas connecting spider hands to words and photo */
     .spiderman-web-canvas {
       position: absolute;
       top: 0;
@@ -177,166 +176,200 @@
       z-index: 1;
     }
 
-    /* Realistic Spider-Man Character in Middle Stage */
-    .middle-spiderman-character {
+    /* Spider-Man Flying Figure swinging across from Left to Right */
+    .flying-traversing-spiderman {
       position: absolute;
-      width: 110px;
-      height: 110px;
-      z-index: 2;
-      animation: spiderMiddleSequence 14s infinite ease-in-out;
-      filter: drop-shadow(0 12px 30px rgba(225, 29, 72, 0.65));
+      width: 95px;
+      height: 95px;
+      z-index: 3;
+      filter: drop-shadow(0 15px 30px rgba(225, 29, 72, 0.7));
+      animation: spiderTraverseLeftToRight 12s infinite ease-in-out;
     }
 
-    /* KEYFRAME SEQUENCE:
-       0s-2s: Drop into center/middle from above
-       2s-6s: Hold in middle, shoot web streams at words and profile pic
-       6s-10s: Web zip & FLY ACROSS THE SCREEN with dynamic swing
-       10s-14s: Land away and prepare for next loop
+    /*
+      TRAJECTORY TIMELINE (12s Loop):
+      0s-1s: Enters from left edge flying in
+      2.5s: Hangs/Zips near Left Words ("Hi, I'm Choppavarapu...") & shoots web
+      5s: Swings up, pulls off that web, shoots web to Middle Words ("Python Developer...")
+      7.5s: Swings toward Right Photo Card & shoots web at Profile Pic
+      9.5s: Shoots final web to top-right ceiling & FLIES OFF to the right edge
+      11s-12s: Reset outside left
     */
-    @keyframes spiderMiddleSequence {
+    @keyframes spiderTraverseLeftToRight {
       0% {
-        top: -150px;
-        left: 48vw;
-        transform: scale(0.8) rotate(0deg);
+        left: -140px;
+        top: 25vh;
+        transform: rotate(25deg) scale(0.9);
         opacity: 0;
       }
-      12% {
-        top: 38vh;
-        left: 46vw;
-        transform: scale(1.15) rotate(-5deg);
+      8% {
+        left: 2vw;
+        top: 22vh;
+        transform: rotate(18deg) scale(1);
         opacity: 1;
       }
-      20% {
+      22% {
+        /* Near Left Name Words */
+        left: 18vw;
+        top: 32vh;
+        transform: rotate(-10deg) scale(1.1);
+        opacity: 1;
+      }
+      38% {
+        /* Moving to Middle Role & Description Words */
+        left: 36vw;
+        top: 20vh;
+        transform: rotate(20deg) scale(1.15);
+        opacity: 1;
+      }
+      55% {
+        /* Mid-Right near Action Buttons */
+        left: 52vw;
         top: 36vh;
-        left: 46vw;
-        transform: scale(1.1) rotate(0deg);
+        transform: rotate(-12deg) scale(1.1);
         opacity: 1;
       }
-      45% {
-        /* In middle shooting webs at heading & photo */
-        top: 36vh;
-        left: 46vw;
-        transform: scale(1.1) rotate(-8deg);
+      72% {
+        /* Near Right Profile Photo */
+        left: 70vw;
+        top: 22vh;
+        transform: rotate(15deg) scale(1.15);
         opacity: 1;
       }
-      50% {
-        /* Preparing to launch/fly */
-        top: 39vh;
-        left: 45vw;
-        transform: scale(1.2) rotate(15deg);
-      }
-      65% {
-        /* HIGH SPEED FLY & SWING ACROSS SCREEN */
-        top: 15vh;
-        left: 82vw;
-        transform: scale(1) rotate(35deg);
-      }
-      80% {
-        top: 25vh;
-        left: 105vw;
-        transform: scale(0.9) rotate(20deg);
+      88% {
+        /* High speed fly away to far right edge */
+        left: 95vw;
+        top: 14vh;
+        transform: rotate(35deg) scale(1);
         opacity: 1;
       }
-      85% {
-        top: -100px;
+      96% {
         left: 110vw;
+        top: 10vh;
+        transform: rotate(40deg) scale(0.9);
         opacity: 0;
       }
       100% {
-        top: -150px;
-        left: 48vw;
+        left: -140px;
+        top: 25vh;
         opacity: 0;
       }
     }
 
-    /* Glowing Web Threads animated when Spider-Man is in middle */
-    .web-beam {
+    /* Dynamic Silk Web Shooters connecting Spider to Words */
+    .word-web-beam {
       stroke: rgba(255, 255, 255, 0.95);
-      stroke-width: 2.5;
+      stroke-width: 2.6;
       stroke-linecap: round;
-      filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.9));
+      filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.95));
       stroke-dasharray: 600;
       stroke-dashoffset: 600;
-      animation: shootWebBeam 14s infinite ease-in-out;
+      animation: shootBeamSequence 12s infinite ease-in-out;
     }
 
-    .web-beam-2 {
-      animation-delay: 0.3s;
+    /* Web 1: Left to Name Heading */
+    .beam-to-name {
+      animation-name: shootBeam1;
+    }
+    /* Web 2: From Name to Role/Description */
+    .beam-to-role {
+      animation-name: shootBeam2;
+    }
+    /* Web 3: From Role to Profile Photo */
+    .beam-to-photo {
+      animation-name: shootBeam3;
+    }
+    /* Web 4: Top Anchor Web pulling Spidey forward */
+    .beam-pull-zipline {
+      animation-name: shootBeam4;
     }
 
-    .web-beam-3 {
-      animation-delay: 0.6s;
+    @keyframes shootBeam1 {
+      0%, 12% { stroke-dashoffset: 600; opacity: 0; }
+      18% { stroke-dashoffset: 0; opacity: 1; }
+      34% { stroke-dashoffset: 0; opacity: 1; }
+      42% { stroke-dashoffset: 0; opacity: 0; }
+      100% { stroke-dashoffset: 600; opacity: 0; }
     }
 
-    @keyframes shootWebBeam {
-      0%, 18% {
-        stroke-dashoffset: 600;
-        opacity: 0;
-      }
-      24% {
-        stroke-dashoffset: 0;
-        opacity: 1;
-      }
-      52% {
-        stroke-dashoffset: 0;
-        opacity: 1;
-      }
-      65% {
-        stroke-dashoffset: 0;
-        opacity: 0;
-      }
-      100% {
-        stroke-dashoffset: 600;
-        opacity: 0;
-      }
+    @keyframes shootBeam2 {
+      0%, 30% { stroke-dashoffset: 600; opacity: 0; }
+      38% { stroke-dashoffset: 0; opacity: 1; }
+      55% { stroke-dashoffset: 0; opacity: 1; }
+      64% { stroke-dashoffset: 0; opacity: 0; }
+      100% { stroke-dashoffset: 600; opacity: 0; }
     }
 
-    /* Web Net overlay appearing over the Words / Heading & Photo */
-    .word-web-splat {
+    @keyframes shootBeam3 {
+      0%, 52% { stroke-dashoffset: 600; opacity: 0; }
+      62% { stroke-dashoffset: 0; opacity: 1; }
+      78% { stroke-dashoffset: 0; opacity: 1; }
+      86% { stroke-dashoffset: 0; opacity: 0; }
+      100% { stroke-dashoffset: 600; opacity: 0; }
+    }
+
+    @keyframes shootBeam4 {
+      0%, 68% { stroke-dashoffset: 600; opacity: 0; }
+      76% { stroke-dashoffset: 0; opacity: 1; }
+      92% { stroke-dashoffset: 0; opacity: 0.9; }
+      98% { stroke-dashoffset: 0; opacity: 0; }
+      100% { stroke-dashoffset: 600; opacity: 0; }
+    }
+
+    /* Web Net Overlays that appear on the words when web strikes */
+    .web-target-overlay {
       position: absolute;
-      width: 140px;
-      height: 90px;
       pointer-events: none;
-      z-index: 5;
-      animation: webSplatReveal 14s infinite ease-in-out;
+      filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.7));
+      animation: targetOverlayReveal 12s infinite ease-in-out;
     }
 
-    .splat-name {
-      top: 19vh;
-      left: 12vw;
+    .overlay-word-name {
+      top: 18vh;
+      left: 10vw;
+      width: 180px;
+      height: 90px;
+      animation-name: overlayName;
     }
 
-    .splat-photo {
-      top: 24vh;
-      right: 14vw;
-      width: 120px;
-      height: 120px;
+    .overlay-word-role {
+      top: 30vh;
+      left: 14vw;
+      width: 150px;
+      height: 70px;
+      animation-name: overlayRole;
     }
 
-    @keyframes webSplatReveal {
-      0%, 23% {
-        opacity: 0;
-        transform: scale(0.3);
-      }
-      28% {
-        opacity: 0.95;
-        transform: scale(1.05);
-      }
-      35% {
-        opacity: 0.85;
-        transform: scale(1);
-      }
-      58% {
-        opacity: 0.85;
-        transform: scale(1);
-      }
-      68% {
-        opacity: 0;
-        transform: scale(1.1);
-      }
-      100% {
-        opacity: 0;
-      }
+    .overlay-photo-card {
+      top: 22vh;
+      right: 12vw;
+      width: 130px;
+      height: 130px;
+      animation-name: overlayPhoto;
+    }
+
+    @keyframes overlayName {
+      0%, 15% { opacity: 0; transform: scale(0.4); }
+      20% { opacity: 0.95; transform: scale(1.05); }
+      35% { opacity: 0.85; transform: scale(1); }
+      48% { opacity: 0; transform: scale(1.1); }
+      100% { opacity: 0; }
+    }
+
+    @keyframes overlayRole {
+      0%, 35% { opacity: 0; transform: scale(0.4); }
+      42% { opacity: 0.95; transform: scale(1.05); }
+      58% { opacity: 0.85; transform: scale(1); }
+      68% { opacity: 0; transform: scale(1.1); }
+      100% { opacity: 0; }
+    }
+
+    @keyframes overlayPhoto {
+      0%, 60% { opacity: 0; transform: scale(0.4); }
+      68% { opacity: 0.95; transform: scale(1.05); }
+      82% { opacity: 0.9; transform: scale(1); }
+      92% { opacity: 0; transform: scale(1.1); }
+      100% { opacity: 0; }
     }
 
     /* Navbar */
@@ -1342,68 +1375,70 @@
     </div>
   </div>
 
-  <!-- 🕸️ SPIDER-MAN STAGE: MIDDLE WEB CASTING & FLYING OVER WORDS & PIC -->
-  <div class="spiderman-story-stage" id="spiderStage">
+  <!-- 🕸️ SPIDER-MAN TRAVERSING STAGE: FLIES FROM LEFT TO RIGHT, SHOOTING WORDS TO WORDS -->
+  <div class="spiderman-story-stage" id="spiderTraverseStage">
     
-    <!-- Dynamic SVG Web Beams shooting from Middle Spider-Man to Text & Photo -->
-    <svg class="spiderman-web-canvas" id="spiderWebCanvas" viewBox="0 0 1000 700" preserveAspectRatio="none">
-      <!-- Beam 1: Shoots toward Title / Name Words (Left side) -->
-      <path class="web-beam" d="M 470 270 Q 320 220 180 180" />
-      <path class="web-beam web-beam-2" d="M 470 275 Q 350 260 220 240" />
+    <!-- Dynamic SVG Web Beams Connecting Spider-Man from Left Words to Right -->
+    <svg class="spiderman-web-canvas" viewBox="0 0 1000 650" preserveAspectRatio="none">
+      <!-- Web 1: Shoots toward Name Words on Left -->
+      <path class="word-web-beam beam-to-name" d="M 50 160 Q 150 250 240 230" />
       
-      <!-- Beam 2: Shoots toward Hero Profile Photo (Right side) -->
-      <path class="web-beam" d="M 520 270 Q 660 230 780 220" />
-      <path class="web-beam web-beam-3" d="M 520 275 Q 680 280 810 260" />
+      <!-- Web 2: Pulls from Name Words to Middle Role & Description Words -->
+      <path class="word-web-beam beam-to-role" d="M 230 250 Q 380 180 480 280" />
+      
+      <!-- Web 3: Shoots from Middle Words to Right Profile Card / Photo -->
+      <path class="word-web-beam beam-to-photo" d="M 490 270 Q 660 170 820 230" />
 
-      <!-- Anchor silk line holding Spider-Man in the center from ceiling -->
-      <line x1="500" y1="0" x2="495" y2="255" stroke="rgba(255,255,255,0.85)" stroke-width="1.8" filter="drop-shadow(0 0 6px #38bdf8)" />
+      <!-- Web 4: Final High Zipline pulling Spider-Man to far Right Top -->
+      <path class="word-web-beam beam-pull-zipline" d="M 720 210 Q 860 140 1000 80" />
     </svg>
 
-    <!-- Web Splat Nets that stick over Name & Photo when shot -->
-    <svg class="word-web-splat splat-name" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M10 40 Q40 10 70 40 Q100 70 120 40" stroke="rgba(255,255,255,0.9)" stroke-width="1.5"/>
-      <path d="M30 15 Q60 40 90 20 Q110 50 80 70" stroke="rgba(56,189,248,0.85)" stroke-width="1.3"/>
-      <path d="M20 60 Q60 45 100 65" stroke="rgba(255,255,255,0.8)" stroke-width="1.2"/>
-      <circle cx="60" cy="40" r="3" fill="#e11d48"/>
+    <!-- Web Net Splats that dynamically appear over Words and Photo as Spidey hits them -->
+    <svg class="web-target-overlay overlay-word-name" viewBox="0 0 160 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 20 Q80 40 150 20 M20 60 Q80 30 140 60 M40 10 Q80 70 120 10" stroke="rgba(255,255,255,0.95)" stroke-width="1.8" />
+      <path d="M30 35 Q80 50 130 35" stroke="rgba(56,189,248,0.9)" stroke-width="1.4" />
+      <circle cx="80" cy="38" r="3.5" fill="#e11d48" />
     </svg>
 
-    <svg class="word-web-splat splat-photo" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Cobweb wrapping over corner of profile card -->
-      <path d="M0 0 Q60 60 120 0 M0 0 Q60 60 0 120 M120 0 Q60 60 120 120" stroke="rgba(255,255,255,0.85)" stroke-width="1.6"/>
-      <path d="M20 20 Q60 60 100 20 M20 20 Q60 60 20 100" stroke="rgba(56,189,248,0.9)" stroke-width="1.3"/>
-      <circle cx="60" cy="60" r="4" fill="#38bdf8"/>
+    <svg class="web-target-overlay overlay-word-role" viewBox="0 0 140 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 35 Q70 15 130 35 M30 15 Q70 55 110 15 M20 55 Q70 35 120 55" stroke="rgba(255,255,255,0.9)" stroke-width="1.6" />
+      <circle cx="70" cy="35" r="3" fill="#38bdf8" />
     </svg>
 
-    <!-- Realistic Middle Spider-Man Hero Character -->
-    <div class="middle-spiderman-character">
+    <svg class="web-target-overlay overlay-photo-card" viewBox="0 0 130 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 0 Q65 65 130 0 M0 0 Q65 65 0 130 M130 0 Q65 65 130 130 M0 130 Q65 65 130 130" stroke="rgba(255,255,255,0.9)" stroke-width="1.8" />
+      <path d="M25 25 Q65 65 105 25 M25 105 Q65 65 105 105" stroke="rgba(56,189,248,0.9)" stroke-width="1.4" />
+      <circle cx="65" cy="65" r="4.5" fill="#e11d48" />
+    </svg>
+
+    <!-- Flying Traversing Spider-Man Hero Figure (Shooting & Zipping Across) -->
+    <div class="flying-traversing-spiderman">
       <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Dual Web shooter blasts firing from left & right wrists -->
-        <circle cx="15" cy="42" r="6" fill="#ffffff" filter="drop-shadow(0 0 8px #38bdf8)" />
-        <circle cx="85" cy="42" r="6" fill="#ffffff" filter="drop-shadow(0 0 8px #38bdf8)" />
+        <!-- Silk web shooter spark stream from wrist -->
+        <circle cx="86" cy="24" r="5" fill="#ffffff" filter="drop-shadow(0 0 8px #38bdf8)" />
+        <line x1="86" y1="24" x2="100" y2="12" stroke="rgba(255,255,255,0.9)" stroke-width="2.5" />
         
-        <!-- Left Shooting Arm pointing at Words -->
-        <path d="M36 46 L20 42 L15 42" stroke="#e11d48" stroke-width="6" stroke-linecap="round" />
-        <!-- Right Shooting Arm pointing at Photo -->
-        <path d="M64 46 L80 42 L85 42" stroke="#e11d48" stroke-width="6" stroke-linecap="round" />
+        <!-- Forward Extended Hand firing web -->
+        <path d="M62 38 L84 25 L88 24" stroke="#e11d48" stroke-width="6" stroke-linecap="round" />
         
-        <!-- Spidey Head & Large Angled Expressive Eyes -->
-        <ellipse cx="50" cy="30" rx="14" ry="17" fill="#e11d48" stroke="#000" stroke-width="1.5" />
-        <!-- Web mesh pattern on mask -->
-        <path d="M50 14 L50 46 M38 30 L62 30" stroke="rgba(0,0,0,0.4)" stroke-width="1" />
-        <!-- Eye Lenses -->
-        <path d="M42 26 Q47 20 50 28 Q45 35 42 26 Z" fill="#ffffff" stroke="#000" stroke-width="2.5" />
-        <path d="M58 26 Q53 20 50 28 Q55 35 58 26 Z" fill="#ffffff" stroke="#000" stroke-width="2.5" />
+        <!-- Mask / Head tilted into forward flight -->
+        <ellipse cx="64" cy="28" rx="13" ry="16" fill="#e11d48" stroke="#000" stroke-width="1.6" />
+        <!-- Sharp expressive eye lenses -->
+        <path d="M57 24 Q63 19 66 26 Q61 32 57 24 Z" fill="#ffffff" stroke="#000" stroke-width="2.4" />
+        <path d="M71 24 Q67 19 64 26 Q69 32 71 24 Z" fill="#ffffff" stroke="#000" stroke-width="2.4" />
         
-        <!-- Athletic Torso & Suit -->
-        <path d="M38 46 Q50 42 62 46 L58 72 Q50 76 42 72 Z" fill="#1d4ed8" stroke="#e11d48" stroke-width="2" />
-        <path d="M45 46 L45 72 M55 46 L55 72" stroke="#e11d48" stroke-width="4" />
-        <!-- Black Chest Spider Logo -->
-        <ellipse cx="50" cy="56" rx="3.5" ry="5.5" fill="#000000" />
-        <path d="M48 52 L42 46 M52 52 L58 46 M48 58 L42 64 M52 58 L58 64" stroke="#000" stroke-width="1.5" />
-
-        <!-- Crouched / Acrobatic Spring Legs -->
-        <path d="M42 72 L30 84 L18 80" stroke="#1d4ed8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M58 72 L70 84 L82 80" stroke="#e11d48" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+        <!-- Hero Body & Suit -->
+        <path d="M46 44 Q58 36 68 42 L62 66 Q50 68 44 58 Z" fill="#1d4ed8" stroke="#e11d48" stroke-width="2" />
+        <path d="M50 44 L56 65" stroke="#e11d48" stroke-width="5" />
+        <!-- Spider Chest Emblem -->
+        <ellipse cx="55" cy="50" rx="3.5" ry="5.5" fill="#000000" />
+        
+        <!-- Rear Arm swinging for momentum -->
+        <path d="M46 46 L28 36 L20 40" stroke="#e11d48" stroke-width="5" stroke-linecap="round" />
+        
+        <!-- Aerodynamic Acrobatic Flying Legs -->
+        <path d="M44 60 L24 74 L12 78" stroke="#1d4ed8" stroke-width="6" stroke-linecap="round" />
+        <path d="M50 64 L30 84 L18 90" stroke="#e11d48" stroke-width="6" stroke-linecap="round" />
       </svg>
     </div>
   </div>
