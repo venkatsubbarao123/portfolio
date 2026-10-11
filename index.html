@@ -1243,7 +1243,7 @@
             <i class="fa-solid fa-bolt" style="color: #10b981;"></i>
             <div>
               <h4>Deployed & Live</h4>
-              <p>5+ Production Projects</p>
+              <p>6+ Production Projects</p>
             </div>
           </div>
         </div>
@@ -1303,23 +1303,24 @@
             </div>
             <div class="project-card-body">
               <h3>DocuExtract AI — Document Extraction Agent</h3>
-              <p>Intelligent AI-powered document processing agent that analyzes complex vendor documents (Invoices, Delivery Notes, Contracts) in PDF & image formats, classifies types, and extracts validated structured JSON schemas.</p>
+              <p>Intelligent AI-powered document processing agent that analyzes vendor documents (Invoices, Delivery Notes, Contracts) in PDF & image formats, classifies document types, and extracts validated structured JSON with SQLite persistence.</p>
               <ul class="project-highlights-list">
-                <li><i class="fa-solid fa-check"></i> <strong>Gemini Multimodal Engine:</strong> Automated document classification, field extraction, and deterministic fallback parsing with cascade model handling.</li>
-                <li><i class="fa-solid fa-check"></i> <strong>Quality & Confidence Engine:</strong> Dynamic extraction confidence scoring, low-quality scan detection, and Pydantic schema validation.</li>
-                <li><i class="fa-solid fa-check"></i> <strong>Human-in-the-Loop Review:</strong> Interactive review dashboard allowing reviewers to inspect, edit fields, add line items, and approve uncertain extractions.</li>
-                <li><i class="fa-solid fa-check"></i> <strong>Robust Test Coverage:</strong> 19 automated unit & integration tests covering classification, OCR fallback, oversized/empty file validation.</li>
+                <li><i class="fa-solid fa-check"></i> <strong>3-Tier Extraction Engine:</strong> Gemini Multimodal AI cascade (<code>gemini-3.5/3.7-flash</code>) with deterministic <code>PyPDF</code> multi-line Local Parser fallback and live engine status telemetry.</li>
+                <li><i class="fa-solid fa-check"></i> <strong>Multi-Currency & GST Engine:</strong> Dynamic currency formatting (INR ₹ / USD), separate CGST & SGST tax breakdown, line-item arithmetic verification, and Pydantic validation.</li>
+                <li><i class="fa-solid fa-check"></i> <strong>Human-in-the-Loop & SQLite DB:</strong> Persistent SQLite document storage, 3-panel interactive review workflow, editable line items, and Dark/Light theme toggle.</li>
+                <li><i class="fa-solid fa-check"></i> <strong>27 Automated E2E Tests:</strong> Full <code>unittest</code> & FastAPI <code>TestClient</code> suite covering classification, local PDF parsing, DB persistence, and API health/config endpoints.</li>
               </ul>
               <div class="project-tech-stack">
                 <span class="tech-pill">Python</span>
                 <span class="tech-pill">FastAPI</span>
-                <span class="tech-pill">Google Gemini Multimodal</span>
+                <span class="tech-pill">Gemini Multimodal AI</span>
+                <span class="tech-pill">SQLite</span>
+                <span class="tech-pill">PyPDF</span>
                 <span class="tech-pill">Pydantic</span>
-                <span class="tech-pill">Uvicorn</span>
                 <span class="tech-pill">Tailwind CSS</span>
               </div>
               <div class="project-btn-group">
-                <a href="https://docuextract-ai-34gs.onrender.com" target="_blank" class="btn-live">
+                <a href="https://docuextract-ai-34gs.onrender.com/" target="_blank" class="btn-live">
                   <span class="live-dot"></span> Live Demo (Render)
                 </a>
                 <a href="https://github.com/venkatsubbarao123/Docuextract-AI" target="_blank" class="btn-github">
@@ -1755,7 +1756,8 @@
   <script>
     const roles = [
       "Python Developer",
-      "Backend Engineer (FastAPI & Node.js)",
+      "Backend Engineer (FastAPI & Django)",
+      "AI & Multimodal Agent Developer",
       "Data Analyst & ML Specialist",
       "MCA Graduate (2026 Batch)"
     ];

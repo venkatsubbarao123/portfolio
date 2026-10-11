@@ -4,7 +4,7 @@
 > MCA Graduate (2024–2026) | Vignan's Lara Institute of Technology & Science  
 > Guntur, Andhra Pradesh, India 🇮🇳
 
-[![Live Portfolio](https://img.shields.io/badge/Live_Portfolio-Vercel-black?style=for-the-badge&logo=vercel)](https://portfolio-venkatsubbarao.vercel.app)
+[![Live Portfolio](https://img.shields.io/badge/Live_Portfolio-Vercel-black?style=for-the-badge&logo=vercel)](https://chsubbuportfolio.vercel.app)
 [![GitHub](https://img.shields.io/badge/GitHub-venkatsubbarao123-181717?style=for-the-badge&logo=github)](https://github.com/venkatsubbarao123)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-venkatasubbarao09-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/venkatasubbarao09)
 [![LeetCode](https://img.shields.io/badge/LeetCode-Wm6hHxkoyq-FFA116?style=for-the-badge&logo=leetcode)](https://leetcode.com/u/Wm6hHxkoyq/)
@@ -13,7 +13,7 @@
 
 ## 🌐 Live Portfolio Links
 
-- 🔗 **Production Portfolio Website:** [https://portfolio-venkatsubbarao.vercel.app](https://chsubbuportfolio.vercel.app)
+- 🔗 **Production Portfolio Website:** [https://chsubbuportfolio.vercel.app](https://chsubbuportfolio.vercel.app) | [https://subbuportfolio.vercel.app](https://subbuportfolio.vercel.app)
 - 📄 **Interactive Direct Page:** [index.html](index.html)
 - 📥 **Curriculum Vitae (PDF):** [Choppavarapu Venkata Subba Rao Resume](resume.pdf)
 
@@ -38,22 +38,22 @@ Passionate **Entry-level Python Developer & Software Engineer** with an MCA degr
 | **Backend & Web Development** | FastAPI, Django, RESTful APIs, CRUD Operations, Debugging & Testing |
 | **AI, GenAI & Data Science** | Google Gemini Multimodal AI, LLMs & Prompt Engineering, NLP, Scikit-learn, Pandas, NumPy |
 | **Data Analytics & BI** | Power BI / DAX, Streamlit, Matplotlib, Seaborn, Exploratory Data Analysis (EDA) |
-| **Databases & Cloud Storage** | PostgreSQL, MySQL, Relational Database Modeling |
+| **Databases & Cloud Storage** | PostgreSQL, MySQL, SQLite, Relational Database Modeling |
 | **Developer Tools & DevOps** | Git, GitHub, VS Code, Jupyter Notebook, Uvicorn, Vercel, Netlify, Render, Railway |
 
 ---
 
 ## 🚀 Featured Deployed & Open-Source Projects
 
-### 1. 🤖 [DocuExtract AI — Intelligent Document Extraction Agent](https://docuextract-ai-34gs.onrender.com)
-- **Live Demo:** [docuextract-ai-34gs.onrender.com](https://docuextract-ai-34gs.onrender.com)
+### 1. 🤖 [DocuExtract AI — Document Extraction Agent](https://docuextract-ai-34gs.onrender.com/)
+- **Live Demo:** [docuextract-ai-34gs.onrender.com](https://docuextract-ai-34gs.onrender.com/)
 - **Source Code:** [github.com/venkatsubbarao123/Docuextract-AI](https://github.com/venkatsubbarao123/Docuextract-AI)
-- **Tech Stack:** `Python`, `FastAPI`, `Google Gemini Multimodal AI`, `Pydantic`, `Uvicorn`, `Tailwind CSS`
+- **Tech Stack:** `Python`, `FastAPI`, `Google Gemini Multimodal AI`, `SQLite`, `PyPDF`, `Pydantic`, `Uvicorn`, `Tailwind CSS`
 - **Highlights:**
-  - Automated classification and structured JSON schema extraction for Invoices, Delivery Notes, and Contracts from PDF/image files.
-  - Multi-tier confidence scoring engine with low-quality scan detection.
-  - Interactive Human-in-the-Loop review dashboard allowing reviewers to inspect, edit, and approve uncertain extractions.
-  - 19 automated unit & integration test suites verifying classification, fallbacks, and validations.
+  - **3-Tier Extraction Engine:** Automated classification & structured JSON schema extraction for Invoices, Delivery Notes, and Contracts using a Gemini Multimodal cascade (`gemini-3.5-flash` / `3.7-flash`) with deterministic `PyPDF` multi-line Local Parser fallback.
+  - **Multi-Currency & GST Engine:** Dynamic currency formatting (`INR ₹` / `USD`), separate `CGST` & `SGST` tax breakdown, line-item arithmetic verification, and multi-signal confidence scoring.
+  - **Human-in-the-Loop & SQLite Persistence:** Persistent SQLite storage with a 3-panel interactive review dashboard, editable line items, live engine telemetry badges, and persistent Dark/Light theme toggle.
+  - **27 Automated Unit & E2E Tests:** Comprehensive `unittest` + FastAPI `TestClient` suite verifying classification, PDF fallback parsing, database persistence, `/health` & `/api/config` endpoints, and verification workflows.
 
 ---
 
