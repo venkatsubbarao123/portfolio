@@ -13,7 +13,7 @@
 
 ## 🌐 Live Portfolio Links
 
-- 🔗 **Production Portfolio Website:** [https://chsubbuportfolio.vercel.app](https://chsubbuportfolio.vercel.app) | [https://subbuportfolio.vercel.app](https://subbuportfolio.vercel.app)
+- 🔗 **Production Portfolio Website:** [https://chsubbuportfolio.vercel.app/](https://chsubbuportfolio.vercel.app/)
 - 📄 **Interactive Direct Page:** [index.html](index.html)
 - 📥 **Curriculum Vitae (PDF):** [Choppavarapu Venkata Subba Rao Resume](resume.pdf)
 
